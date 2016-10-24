@@ -39,7 +39,15 @@ public final class Main {
 
   /** That is the port number. */
 
-  private static final int PORT = 9998;
+  private static final int PORT = getHerokuAssignedPort();
+  
+  static int getHerokuAssignedPort() {
+    ProcessBuilder processBuilder = new ProcessBuilder();
+    if (processBuilder.environment().get("PORT") != null) {
+        return Integer.parseInt(processBuilder.environment().get("PORT"));
+    }
+    return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+}
 
   /** This constructor takes the arguments from the command line and sets it to
   /**
