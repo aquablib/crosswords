@@ -1,7 +1,10 @@
 <div id="wrapper">
 	 <link rel="stylesheet" href="css/style.css">
+	 <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900" rel="stylesheet">
+	 <link href="https://fonts.googleapis.com/css?family=Raleway:400,700"  rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Walter+Turncoat" rel="stylesheet">
     <script src="js/jquery-2.1.1.js"></script>
 	<script src="js/home.js"></script>
     

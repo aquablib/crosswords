@@ -1,9 +1,12 @@
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Walter+Turncoat" rel="stylesheet">
+    	 <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+<div id="nav">CROSSWORDS WITH FRIENDS</div>
 <div id="timer">5:00</div>
-<div id="player" class="single">single player</div>
-<div id="end">end game & show answers</div>
+<div id="end">end game</div>
 <div id=${id} class="crossword">
 <div id="crosswordWrapper">
 <#assign num=1>
@@ -39,7 +42,7 @@
 
 <div id = "leftWrapper">
 <ul id="clues" class="total${total} clueACROSS">
-<span style="color:white">ACROSS CLUES</span>
+<span class="orientation">ACROSS CLUES</span><p>
 <#assign num=1>
 <#list crossword as row>
 	<#list row as col>
@@ -61,7 +64,7 @@
 </#list>
 </ul>
 <ul id="clues" class="total${total} clueDOWN">
-<span style="color:white">DOWN CLUES</span>
+<span class="orientation">DOWN CLUES</span><p>
 <#assign num=1>
 <#list crossword as row>
 	<#list row as col>

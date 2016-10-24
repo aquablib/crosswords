@@ -9,6 +9,10 @@
   <packaging>jar</packaging>
   <version>1.0</version>
  
+    
+    
+    
+    
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -19,12 +23,6 @@
       <groupId>org.xerial</groupId>
       <artifactId>sqlite-jdbc</artifactId>
       <version>3.8.7</version>
-    </dependency>
-
-    <dependency>
-      <groupId>net.sf.jopt-simple</groupId>
-      <artifactId>jopt-simple</artifactId>
-      <version>4.8</version>
     </dependency>
 
     <dependency>
@@ -79,10 +77,38 @@
       <artifactId>spark-template-freemarker</artifactId>
       <version>2.0.0</version>
     </dependency>
+      
+
   </dependencies>
+    
 
   <build>
     <plugins>
+        
+        
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals><goal>copy-dependencies</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
+        
+        
+        
+        <plugin>
+        <groupId>com.heroku.sdk</groupId>
+        <artifactId>heroku-maven-plugin</artifactId>
+        <version>1.1.1</version>
+      </plugin>
+      
+        
+        
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -93,6 +119,33 @@
           <compilerArgument>-Xlint:all</compilerArgument>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <finalName>crosswords</finalName>
+          <appendAssemblyId>false</appendAssemblyId>
+          <archive>
+            <manifest>
+              <mainClass>edu.brown.cs.GROUP.crosswordswithFriends.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <id>build-jar-with-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
     <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
@@ -100,12 +153,20 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>edu.brown.cs.smg1.boggle.Main</mainClass>
+                        <mainClass>edu.brown.cs.GROUP.crosswordswithFriends.Main</mainClass>
                     </manifest>
                 </archive>
+                  <processTypes>
+     <web>java $JAVA_OPTS -cp target/classes:target/dependency/* edu.brown.cs.GROUP.crosswordswithFriends.Main</web>
+  </processTypes>
             </configuration>
         </plugin>
     </plugins>
+      
+
+        
+      
+      
   </build>
 
   <reporting>
@@ -138,13 +199,12 @@
         </reportSets>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.13</version>
-        <configuration>
-          <configLocation>config/cs32_checks.xml</configLocation>
-        </configuration>
+        <groupId>com.heroku.sdk</groupId>
+        <artifactId>heroku-maven-plugin</artifactId>
+        <version>1.1.1</version>
       </plugin>
+
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
@@ -156,13 +216,7 @@
         <version>3.0.0</version>
       </plugin>
         
-      <plugin>
-        <groupId>com.heroku.sdk</groupId>
-        <artifactId>heroku-maven-plugin</artifactId>
-        <version>1.1.1</version>
-      </plugin>
-        
-        
+
         
     </plugins>
   </reporting>
