@@ -5,7 +5,7 @@
  
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.brown.cs</groupId>
-  <artifactId>crosswords-with-friends</artifactId>
+  <artifactId>crosswords</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
  
@@ -146,21 +146,6 @@
         </executions>
       </plugin>
       
-    <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>2.4</version>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <mainClass>edu.brown.cs.GROUP.crosswordswithFriends.Main</mainClass>
-                    </manifest>
-                </archive>
-                  <processTypes>
-     <web>java $JAVA_OPTS -cp target/classes:target/dependency/* edu.brown.cs.GROUP.crosswordswithFriends.Main</web>
-  </processTypes>
-            </configuration>
-        </plugin>
     </plugins>
       
 

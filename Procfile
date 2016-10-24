@@ -1,1 +1,1 @@
-web: java -jar target/crosswords.jar; target/dependency/*
+web: java -jar target/crosswords.jar;
